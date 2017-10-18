@@ -1,12 +1,16 @@
-let windowWidth, windowHeight, userAgent, mapWidth;
+let windowWidth, windowHeight, userAgent, mapWidth, mapHeight;
 
 windowWidth = window.innerWidth;
 mapWidth = windowWidth * 70/100;
 windowHeight = window.innerHeight;
+mapHeight = windowHeight * 45/100;
+
 userAgent = window.navigator.userAgent;
 
 if (userAgent.match(/iPad/) || userAgent.match(/Iphone/)) {
     document.getElementById("map").style.width = mapWidth + "px";
+    document.getElementById("map").style.height = mapHeight + "px";
+    
 }
 
 
