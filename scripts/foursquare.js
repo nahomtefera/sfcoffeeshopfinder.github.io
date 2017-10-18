@@ -1,3 +1,15 @@
+let windowWidth, windowHeight, userAgent, mapWidth;
+
+windowWidth = window.innerWidth;
+mapWidth = windowWidth * 70/100;
+windowHeight = window.innerHeight;
+userAgent = window.navigator.userAgent;
+
+if (userAgent.match(/iPad/) || userAgent.match(/Iphone/)) {
+    document.getElementById("map").style.width = mapWidth + "px";
+}
+
+
 let items;
 /**********FourSquare***************/
 $.ajax({
