@@ -14,9 +14,11 @@ $.ajax({
     async: true,
 
     success: function (data) {
-        let result = data.response;
+        var result = data.response;
+        // console.log(data.response.groups[0].items);
     }
-}).done(function(result){
+}).then(function(result){
+    // console.log("This is a request")
     items = result.response.groups[0].items;
     // Activate Knockout.js
     ko.applyBindings(new viewModel());

@@ -8,9 +8,7 @@ let viewModel = function appViewModel() {
     this.businessToRender = ko.observableArray();
     this.itemsToRender = ko.observableArray();
     
-    for(let i = 0; i < allBusinesses.length; i++){
-        self.businessToRender().push(allBusinesses[i]);
-    }
+  
     // With items from foursquare
     for(let i = 0; i < items.length; i++){
         self.itemsToRender().push(items[i]);
