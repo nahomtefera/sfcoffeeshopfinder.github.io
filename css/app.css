@@ -1,0 +1,247 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+
+
+
+#search-box {
+    /* width: calc(100% - 18px); */
+    background-image: url(../images/search-icon.png);
+    background-position: 5px 10px;
+    background-repeat: no-repeat;
+    background-size: 17px;
+    width: 100%;
+    float: left;
+    border: 1px solid #f7f7f7;
+    padding: 10px;
+    padding-left: 33px;
+    font-family: Roboto;
+    font-weight: 300;
+}
+
+#search-box:focus {
+    border: 1px solid #88c1ce;
+}
+
+#container {
+    max-height: 100%;    
+    overflow: hidden;
+}
+
+#list-container {
+    overflow: hidden;
+    box-sizing: border-box;
+    border-right: 4px solid #d2d2d2;
+}
+
+.marker-title {
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+#list-ul {
+    width: 100%;
+    text-align: left;
+    padding: 0;
+    margin: 0;
+    overflow: scroll;
+    max-height: 100%;
+    padding-right: 18px;
+    overflow-x: hidden;
+}
+
+#show-hide-markers-container {
+    padding: 0px;
+    text-align: center;
+    height: 30px;    
+    line-height: 30px;
+    width: 100%;
+    overflow: auto;
+    border-bottom: 2px solid lightblue;    
+    
+}
+
+#foursquare-mention {
+    overflow: auto;
+    padding: 4px;
+    height: 25px;
+    line-height: 25px;
+    font-family: "Roboto";
+    font-size: 12px;
+    border-bottom: 1px solid lightblue;    
+}
+
+.marker-title {
+    min-width: 170px;
+}
+
+#foursquare-mention a, #foursquare-mention a:visited {
+    text-decoration: none;
+    color: cadetblue;
+}
+
+#foursquare-logo {
+    max-width: 15px;
+    border-radius: 5px;
+}
+
+.show-hide {
+    text-align: center;
+    width: calc(50% - 4px);
+    height: 100%;
+    cursor: pointer;
+    font-family: 'Roboto', sans-serif;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 0.8em;
+}
+
+#show-markers:hover {
+    background: cadetblue;
+    color: white;
+}
+
+#hide-markers:hover {
+    background: tomato;
+    color: white;
+}
+
+#show-markers {
+    float: left;
+    color: cadetblue;    
+}
+
+#hide-markers {
+    float: right;
+    color: tomato;
+}
+
+li {
+    text-decoration: none;
+    list-style: none;
+    font-family: 'Roboto', sans-serif;
+    cursor: pointer;
+    border: 1px solid #f5f5f5;
+    padding: 5px;
+    padding-left: 20px;
+    width: 100%;
+    overflow: auto;
+}
+
+li:hover {
+    background: #e2ffcc;
+}
+
+li:hover  .name {
+    color: #082a6b;    
+}
+
+li:hover .address {
+    color: #111;
+}
+
+li:hover .time {
+    color: #111;
+}
+
+li:hover .rating-container {
+    border-color: #ff3e1a;
+    color: #ff3e1a;
+}
+
+li:hover .rating {
+    color: #ff3e1a;
+}
+
+li a{
+    color: #1a7d9b;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+li a:visited {
+    color: #1a7d9b;
+}
+
+.info-container {
+    float: left;
+}
+
+.rating-container {
+    width: 24px;
+    height: 24px;
+    line-height: 24px;
+    text-align: center;
+    border: 2px solid #ff8771;
+    border-radius: 50%;
+    float: right;
+    margin-right: 25px;
+    margin-top:  10px;
+    font-family: "Roboto";
+    font-weight: bold;
+    color: cadetblue;
+}
+
+#map-container {
+    height: 100%;
+    width: 70%;
+    display: inline-block;
+    float: right;
+    text-align: center;
+}
+
+#map {
+    height: 100%;
+    display: inline-block;
+    width: 100%;
+    /* margin-top: 50px; */
+    /* border-radius: 15px; */
+    /* border: 2px solid #eee; */
+}
+
+.container {
+    width: 30%;
+    height: 100%;
+    display: inline-block;
+    float: left;
+    text-align: center;
+}
+
+#pano {
+    height: 150px;
+}
+
+.rating {
+    color: #ea9841;
+    font-size: 13px;
+}
+
+.address, .time{
+    font-size: 0.9em;
+    margin-left: 9px;
+    font-weight: 300;
+    color: #555
+}
+
+/* .address:hover, .time:hover {
+    font-size: 0.9em;
+    margin-left: 9px;
+    font-weight: bold;
+    color: #111
+} */
+
+@media only screen and (max-width: 768px) {
+    #map-container {
+        width: 100%;
+        height: 45%;    
+    }
+
+    .container {
+        width: 100%;        
+    }
+}

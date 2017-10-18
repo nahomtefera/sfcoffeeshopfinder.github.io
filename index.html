@@ -1,0 +1,90 @@
+<html>
+    <head>
+        <title>Neighborhood Map Project</title>
+        <link rel="stylesheet" href="css/app.css">
+        <!-- Normalize css -->
+        <link rel="stylesheet" href="css/normalize.css">
+        <!-- jQuery -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <!-- Fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+    </head>
+    
+    <body>
+            
+            <div id="map-container">
+                    <div id="map"></div>           
+                </div>  
+        <div class="container">
+
+            <div id="list-container">
+                <div>
+                    <input data-bind="textInput: filter()" type="text" id="search-box" placeholder=" .. Search SF Coffe Shops">
+                </div>
+                <div id="show-hide-markers-container">
+                    <div class="show-hide" id="show-markers">Display All</div>
+                    <div class="show-hide" id="hide-markers">Hide All</div>
+                </div>
+                <div id="foursquare-mention">
+                    <a target="blank" href="https://foursquare.com">
+                        <img id="foursquare-logo" src="images/foursquare-logo.png" alt="">
+                        Results provided by Foursquare 
+                    </a>
+                </div>
+                <ul data-bind="foreach: listedItems" id="list-ul">
+                    <li class="items" data-bind="click: $parent.openMarker">
+                        <div class="info-container">
+                            <a class="name" href="#"data-bind="text: name"></a>
+                            <br>
+                            <span class="address" data-bind="text: address"></span>
+                            <br>
+                            <span class="time" data-bind="text: time"></span>
+                            <br>
+                        </div>
+                        
+                        <div class="rating-container">
+                            <span class="rating" data-bind="text: rating"></span>                        
+                        </div>
+                        <br>
+                    </li>
+                </ul>
+
+
+                <!-- <button data-bind="click: filter()">Hey</button> -->
+            </div>
+            
+            <br>
+            <!-- <span>Draw Search Area</span>
+            <input id="toggle-drawing" type="button" value="Drawing Tool">
+            <br>
+            <br>
+            <h1>My buttons</h1>
+            <button id="show-markers">Show Markers</button>
+            <button id="hide-markers">Hide Markers</button> -->
+
+            
+        </div>
+
+
+        <div id="mapa"></div>           
+        
+
+        <!-- Scripts -->
+        <!-- FourSquare --><script async src="scripts/foursquare.js"></script>
+
+        <!-- Knockoutjs --><script src="scripts/knockout.js"></script> 
+
+        <!-- Knockout ViewModel --><script defer src="scripts/viewModel.js"></script> 
+        <!-- Main script --><script src="scripts/app.js"></script>
+
+        
+        <!-- Google Maps API call -->
+        <script async defer
+            src="https://maps.googleapis.com/maps/api/js?libraries=drawing,geometry&key=AIzaSyDq6WjLcfMSZ-bWYxkRr-EZ8NbcioNfzYE&v=3">
+        </script>
+    </body>
+    
+    </html>
