@@ -1,23 +1,3 @@
-// let windowWidth, windowHeight, userAgent, mapWidth, mapHeight;
-
-// windowWidth = window.innerWidth;
-// mapWidth = windowWidth * 70/100;
-// windowHeight = window.innerHeight;
-// mapHeight = windowHeight * 45/100;
-
-// userAgent = window.navigator.userAgent;
-
-// if (userAgent.match(/iPad/) || userAgent.match(/Iphone/)) {
-//     document.getElementById("map").style.width = mapWidth + "px";
-//     document.getElementById("map").style.height = mapHeight + "px";
-    
-// } else {
-    
-//     document.getElementById("map").style.width = mapWidth + "px";
-//     document.getElementById("map").style.height = mapHeight + "px";
-// }
-
-
 let items;
 /**********FourSquare***************/
 $.ajax({
@@ -40,9 +20,9 @@ $.ajax({
 }).then(function(result){
     console.log("This is a request")
     items = result.response.groups[0].items;
-
     // Activate Knockout.js
     ko.applyBindings(new viewModel());
+
 }).then(function(items){
     initMap();
 });

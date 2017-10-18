@@ -248,8 +248,8 @@ function populateInfoWindow(marker, infoWindow){
                     nearStreetViewLocation, marker.position);
 
                 infoWindow.setContent('<div class="marker-title">' + marker.title + 
-                    "<br/>"+ marker.address + "<br/>" + 
-                    "<br/>" + '</div><div id="pano"></div>'
+                    "<br/>" + "</div>" + "<div class='marker-address'>" + 
+                    marker.address + "</div>" + '</div><div id="pano"></div>'
                 );
                 
                 let panoramaOptions = {

@@ -1,4 +1,4 @@
-body {
+ body {
     font-family: Arial, Helvetica, sans-serif;
     margin: 0;
     padding: 0;
@@ -44,6 +44,10 @@ body {
     font-weight: bold;
 }
 
+.marker-address {
+    font-weight: 300;
+}
+
 #list-ul {
     width: 100%;
     text-align: left;
@@ -77,7 +81,7 @@ body {
 }
 
 .marker-title {
-    min-width: 170px;
+    min-width: 17   0px;
 }
 
 #foursquare-mention a, #foursquare-mention a:visited {
