@@ -201,9 +201,9 @@ function initMap(){
     // 7. Now we will add another event listener to the button `show-marker` and `hide-marker`
     document.getElementById("show-markers").addEventListener('click', showMarkers);
     document.getElementById("hide-markers").addEventListener('click', hideMarkers);
-    document.getElementById('toggle-drawing').addEventListener('click', function() {
-        toggleDrawing(drawingManager);
-      });
+    // document.getElementById('toggle-drawing').addEventListener('click', function() {
+    //     toggleDrawing(drawingManager);
+    //   });
 
     // 11. iii. Add event listener to show markers inside the plygon once it's complete
     drawingManager.addListener("overlaycomplete", function(event){
