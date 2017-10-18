@@ -1,12 +1,9 @@
-let allBusinesses = ['The great Pizza', 'Five Guys', 'Nick the Greek', 'Abesha Restaurant', 'Amigo Mio' ];
 let searchBox = document.getElementById("search-box");
 let ulList = document.getElementById("list-ul");
 let lastOpenedInfoWindow;
 
 let viewModel = function appViewModel() {
-    console.log("Hey I'm inside viewModel");
     let self = this;
-    console.log(items);
     
     this.businessToRender = ko.observableArray();
     this.itemsToRender = ko.observableArray();
@@ -18,7 +15,6 @@ let viewModel = function appViewModel() {
     for(let i = 0; i < items.length; i++){
         self.itemsToRender().push(items[i]);
     } 
-    console.log("items to render: ", self.itemsToRender());
     this.listedBusiness = ko.observableArray([
     ]);
 
@@ -61,7 +57,6 @@ let viewModel = function appViewModel() {
                 }
                 
             }
-            console.log(self.listedItems);
         }
     };
 
@@ -69,7 +64,6 @@ let lastPopupWindow;
 let newPopUpWindow = new google.maps.InfoWindow()
 
     this.openMarker = function() {
-        // console.log();
         if(lastPopupWindow) {
             lastPopupWindow().close();
         }
@@ -82,6 +76,4 @@ let newPopUpWindow = new google.maps.InfoWindow()
             }
         }
     }
-    
-    console.log(this.businessToRender());
 }

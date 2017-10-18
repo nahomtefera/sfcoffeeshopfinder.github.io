@@ -142,10 +142,7 @@ function initMap(){
         {title: 'East Village Hip Studio', location: {lat: 40.7281777, lng: -73.984377}},
         {title: 'TriBeCa Artsy Bachelor Pad', location: {lat: 40.7195264, lng: -74.0089934}},
         {title: 'Chinatown Homey Space', location: {lat: 40.7180628, lng: -73.9961237}}
-    ];
-    // console.log(locations);
-    console.log(items)
-    
+    ];    
     // 5. Create a variable that will be the popout info window
     let popupInfoWindow = new google.maps.InfoWindow();
     let lastPopupInfoWindow;
@@ -293,7 +290,6 @@ function hideMarkers(){
 // Function to toggle Drawing functionality
 function toggleDrawing(drawingManager){
     if (drawingManager.map) {
-        console.log(drawingManager.map)
         drawingManager.setMap(null);
         // In case the user drew anything, get rid of the polygon
         if (polygon !== null) {
