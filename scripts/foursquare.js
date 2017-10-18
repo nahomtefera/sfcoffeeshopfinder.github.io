@@ -11,6 +11,10 @@ if (userAgent.match(/iPad/) || userAgent.match(/Iphone/)) {
     document.getElementById("map").style.width = mapWidth + "px";
     document.getElementById("map").style.height = mapHeight + "px";
     
+} else {
+    
+    document.getElementById("map").style.width = mapWidth + "px";
+    document.getElementById("map").style.height = mapHeight + "px";
 }
 
 
