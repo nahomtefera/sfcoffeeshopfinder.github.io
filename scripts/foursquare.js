@@ -18,12 +18,13 @@ $.ajax({
         // console.log(data.response.groups[0].items);
     }
 }).then(function(result){
-    // console.log("This is a request")
     items = result.response.groups[0].items;
     // Activate Knockout.js
     ko.applyBindings(new viewModel());
 
 }).then(function(items){
     initMap();
+}).fail(function(error){
+    console.log(error);
 });
 
