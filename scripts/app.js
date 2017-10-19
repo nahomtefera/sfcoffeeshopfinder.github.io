@@ -20,7 +20,8 @@
 */
 
 //GLOBAL variables `map`, `polygon` and `markers` 
-let map, markers = [], polygon = null;
+let map, markers = [], polygon = null, lastMarker;
+
 function initMap(){
     let style = [
         {
@@ -136,7 +137,7 @@ function initMap(){
 
     // 4. Create the variable locations and push the location that are going to be rendered.    
     // 5. Create a variable that will be the popout info window
-    let popupInfoWindow = new google.maps.InfoWindow();
+    let popupInfoWindow;
     let lastPopupInfoWindow;
 
     // 6. Now we will create a new array inside a for loopand we will push inside the locations we want to render with markers
@@ -149,28 +150,29 @@ function initMap(){
         };
         title = items[i].venue.name;
         id = items[i].venue.id;
-        address = items[i].venue.location.address
+        address = items[i].venue.location.address;
         // create a new marker per each location
         marker = new google.maps.Marker({
             position: position,
             title: title,
             address:address,
             animation: google.maps.Animation.DROP,
-            id: id
+            id: id,
+            icon: "http://maps.google.com/mapfiles/ms/icons/blue-dot.png"
         });
         // push every marker to an array
         markers.push(marker);
         // create and event listener to open an info window on click
-        marker.addListener('click', function(){
-            if(lastPopupInfoWindow){
-                lastPopupInfoWindow().close();
-            }
-            if(newPopUpWindow){
-                lastPopupWindow().close();
-            }
-            populateInfoWindow(this, popupInfoWindow)
-            lastPopupInfoWindow = populateInfoWindow(this, popupInfoWindow);
-        });
+        marker.addListener('click', createMarkerPopup);
+    }
+
+    function createMarkerPopup(){      
+        // the marker will first bounce
+        this.setAnimation(google.maps.Animation.BOUNCE);
+        stopMarkerAnimation(this, 2000);
+        // create the infowindow
+        populateInfoWindow(this);
+        
     }
     //
     // 11. We are also going to create a functino to draw in our map `drawingManager()`
@@ -188,8 +190,8 @@ function initMap(){
     });
 
     // 7. Now we will add another event listener to the button `show-marker` and `hide-marker`
-    document.getElementById("show-markers").addEventListener('click', showMarkers);
-    document.getElementById("hide-markers").addEventListener('click', hideMarkers);
+    // This is know handeled by knockout event binders
+    
     // document.getElementById('toggle-drawing').addEventListener('click', function() {
     //     toggleDrawing(drawingManager);
     //   });
@@ -214,9 +216,20 @@ function initMap(){
         polygon.getPath().addListener('insert_at', searchWithinPolygon);
     });
     
+    initializeMarkers();
 }
 // 8. Create the function that will create the infoWindow
-function populateInfoWindow(marker, infoWindow){
+let getStreetView = function(){};
+
+function populateInfoWindow(marker){
+         
+    // Close previous popup
+    if(lastPopupWindow){
+        lastPopupWindow.close();
+    }
+    
+    infoWindow = new google.maps.InfoWindow();
+    
     // Check to make sure the infowindow is not already opened on this marker.
     if (infoWindow.marker != marker) {
         infoWindow.marker = marker;
@@ -228,9 +241,9 @@ function populateInfoWindow(marker, infoWindow){
         let streetViewService = new google.maps.StreetViewService();
         let radius = 50;
         //
-        // 10. We will also create a function to pop up Street Viw imagery, `getStreetView()`
+        // 10. We will also create a function to pop up Street Viw imagery, `getStreetView`
         //
-        function getStreetView(data, status){
+        getStreetView = function(data, status){
             if(status == google.maps.StreetViewStatus.OK) {
                 let nearStreetViewLocation = data.location.latLng;
                 let heading = google.maps.geometry.spherical.computeHeading(
@@ -252,18 +265,19 @@ function populateInfoWindow(marker, infoWindow){
                 } else {
                     infoWindow.setContent('<div>' + marker.title + "<br/>" + "<br/>" + ' No StreetView Found</div>');
                 }
-        }
+        };
         // We will use  StreetView service to get the closest streetView image
         // within 50m of the location
         streetViewService.getPanoramaByLocation(marker.position, radius, getStreetView);
 
         // Open InfoWindow in the correct marker
+        lastPopupWindow = infoWindow;
         infoWindow.open(map, marker);
     }
-};
+}
 // 9. Create the functions that will display and hide the infoWindow
 // This function will loop through every marker and display them all
-function showMarkers(){
+function initializeMarkers(){
     var bounds = new google.maps.LatLngBounds();
     
     for (let i = 0; i < markers.length; i++){
@@ -271,14 +285,7 @@ function showMarkers(){
         bounds.extend(markers[i].position);
     }
     map.fitBounds(bounds);    
-};
-
-function hideMarkers(){
-    for (var i = 0; i < markers.length; i++) {
-        markers[i].setMap(null);
-      }
-};
-
+}
 // Function to toggle Drawing functionality
 function toggleDrawing(drawingManager){
     if (drawingManager.map) {
@@ -304,3 +311,10 @@ function searchWithinPolygon() {
         }
     }
 }
+
+function stopMarkerAnimation(marker, timeout) {
+    window.setTimeout(function () {
+        marker.setAnimation(null);        
+    }, timeout);
+}
+

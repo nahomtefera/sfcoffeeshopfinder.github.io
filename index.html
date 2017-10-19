@@ -25,8 +25,8 @@
                     <input data-bind="textInput: filter()" type="text" id="search-box" placeholder=" .. Search SF Coffe Shops">
                 </div>
                 <div id="show-hide-markers-container">
-                    <div class="show-hide" id="show-markers">Display All</div>
-                    <div class="show-hide" id="hide-markers">Hide All</div>
+                    <div class="show-hide" id="hide-markers" data-bind="click: hideMarkers">Hide All</div>
+                    <div class="show-hide" id="show-markers" data-bind="click: showMarkers">Display All</div>
                 </div>
                 <div id="foursquare-mention">
                     <a target="blank" href="https://foursquare.com">
@@ -52,33 +52,22 @@
                     </li>
                 </ul>
 
-
-                <!-- <button data-bind="click: filter()">Hey</button> -->
             </div>
             
             <br>
-            <!-- <span>Draw Search Area</span>
-            <input id="toggle-drawing" type="button" value="Drawing Tool">
-            <br>
-            <br>
-            <h1>My buttons</h1>
-            <button id="show-markers">Show Markers</button>
-            <button id="hide-markers">Hide Markers</button> -->
-
             
         </div>
 
-
-        <div id="mapa"></div>           
         
 
         <!-- Scripts -->
-        <!-- FourSquare --><script async src="scripts/foursquare.js"></script>
+        <!-- Main script --><script src="scripts/app.js"></script>
+
+        <!-- FourSquare --><script src="scripts/foursquare.js"></script>
 
         <!-- Knockoutjs --><script src="scripts/knockout.js"></script> 
 
-        <!-- Knockout ViewModel --><script defer src="scripts/viewModel.js"></script> 
-        <!-- Main script --><script src="scripts/app.js"></script>
+        <!-- Knockout ViewModel --><script src="scripts/viewModel.js"></script> 
 
         
         <!-- Google Maps API call -->

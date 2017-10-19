@@ -10,7 +10,6 @@
 
 
 #search-box {
-    /* width: calc(100% - 18px); */
     background-image: url(../images/search-icon.png);
     background-position: 5px 10px;
     background-repeat: no-repeat;
@@ -203,9 +202,6 @@ li a:visited {
     height: 100%;
     display: inline-block;
     width: 100%;
-    /* margin-top: 50px; */
-    /* border-radius: 15px; */
-    /* border: 2px solid #eee; */
 }
 
 .container {
@@ -231,13 +227,7 @@ li a:visited {
     font-weight: 300;
     color: #555
 }
-
-/* .address:hover, .time:hover {
-    font-size: 0.9em;
-    margin-left: 9px;
-    font-weight: bold;
-    color: #111
-} */
+/* Responsiveness */
 
 @media only screen and (max-width: 768px) {
     #map-container {

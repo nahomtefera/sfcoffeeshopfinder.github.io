@@ -15,16 +15,16 @@ $.ajax({
 
     success: function (data) {
         var result = data.response;
-        // console.log(data.response.groups[0].items);
     }
 }).then(function(result){
     items = result.response.groups[0].items;
     // Activate Knockout.js
-    ko.applyBindings(new viewModel());
+    ko.applyBindings(new ViewModel());
 
 }).then(function(items){
     initMap();
 }).fail(function(error){
     console.log(error);
+    alert("There was an issue with " + "\nl" + error);
 });
 

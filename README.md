@@ -1,5 +1,4 @@
 # SF Coffee Shop Finder - Nanodegree project
-===============================
 
 Final Nanodegree project.
 
@@ -12,16 +11,14 @@ In order to install it in your computer clone it with git and open index.html fi
 
 ```
 git clone https://github.com/nahomtefera/nahomtefera.github.io.git
-cd Neighborhood_Map_Project
+cd SFCoffeeShopFinder
 start index.html
 ```
 
 ## Live Version
 
-```
 https://nahomtefera.github.io/sfcoffeeshopfinder.github.io/index.html
 
-```
 
 ## Built With
 
@@ -30,7 +27,7 @@ https://nahomtefera.github.io/sfcoffeeshopfinder.github.io/index.html
 
 ## Functionality
 
-There is a list with 50 Coffe shops in San Francisco.
+The will display a list with 50 Coffee shops in San Francisco.
 You have the name of the business, the address, the rating and wether it's open or not.
 
 When you use the Search bar you the list will be filtered. You can either enter the Name of the business or and address and you will fin a result matching your query.

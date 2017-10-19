@@ -1,8 +1,8 @@
 let searchBox = document.getElementById("search-box"); // element where the user will start the search
-let ulList = document.getElementById("list-ul");
 let lastOpenedInfoWindow; // we use this variable as a flag to know wich marker was opened
+let lastPopupWindow;
 
-let viewModel = function appViewModel() {
+let ViewModel = function appViewModel() {
     let self = this;
     
     this.itemsToRender = ko.observableArray();
@@ -20,7 +20,13 @@ let viewModel = function appViewModel() {
         // self.listedItems([]);
         self.listedItems([]);
         let noMatches = 0;
-        
+
+        //Close any popup window that might be open
+        if(lastPopupWindow){
+            lastPopupWindow.close();
+        }
+
+
         for(let i = 0; i < self.itemsToRender().length; i++) {
             // we will assign this values to the markers
             let currentItem = self.itemsToRender()[i];
@@ -30,7 +36,7 @@ let viewModel = function appViewModel() {
             let currentItemRating = currentItem.venue.rating;
             let currentIsOpen = currentItem.venue.hours.status;
             // if the value of the input matches 
-            // the name of the business or the address we will show that business
+            // the name of the business or the address we will show that business            
             if(currentItemName.toLowerCase().indexOf(searchBox.value.toLowerCase()) != -1 || (currentItemAddress) && currentItemAddress.toLowerCase().indexOf(searchBox.value.toLowerCase()) != -1 ){
                 self.listedItems.push(
                     {
@@ -38,18 +44,30 @@ let viewModel = function appViewModel() {
                         address: currentItemAddress,
                         id: currentItemId,
                         rating: currentItemRating,
-                        time: currentIsOpen
+                        time: currentIsOpen,
                     }
                 );
+                // this will show the markers that match the input
+                if(typeof markers[i] !== "undefined"){
+                    markers[i].setVisible(true);
+                }
             } else {
+
+                // this will hide the markers that don't match with the search input
+                markers[i].setVisible(false);
                 // if the value of the search box doesn't match 
                 // the name or address of our businesses it will display 'no matches'
                 noMatches++;
                 
+                
                 if(noMatches === self.itemsToRender().length){
                     self.listedItems([
                         {
-                            name: "No Matches"
+                            name: "",
+                            address: "",
+                            id: "",
+                            rating: "",
+                            time: ""
                         }
                     ]);
                 }
@@ -58,21 +76,39 @@ let viewModel = function appViewModel() {
         }
     };
 
-let lastPopupWindow;
+    let newPopUpWindow;
 
-let newPopUpWindow = new google.maps.InfoWindow()
     // when a new infoWindow opens the previous one will clsoe
     this.openMarker = function() {
-        if(lastPopupWindow) {
-            lastPopupWindow().close();
+        if(lastPopupWindow){
+            lastPopupWindow.close();
         }
-
-        for (let i = 0; i < markers.length; i++){
+        for (let i = 0; i < markers.length; i++){            
             if(this.id === markers[i].id){
-                markers[i].setMap(map);
-                populateInfoWindow(markers[i],  newPopUpWindow);
-                lastPopupWindow = populateInfoWindow(markers[i], newPopUpWindow);
+                markers[i].setVisible(true);
+                // animation to make the marker bounce when we click in he list
+                markers[i].setAnimation(google.maps.Animation.BOUNCE);
+                stopMarkerAnimation(markers[i], 2000);
+                populateInfoWindow(markers[i]);
             }
         }
     }
+
+    this.showMarkers = function(){
+        var bounds = new google.maps.LatLngBounds();
+        
+        for (let i = 0; i < markers.length; i++){
+            markers[i].setVisible(true);
+            bounds.extend(markers[i].position);
+        }
+        map.fitBounds(bounds);    
+    }
+    
+    this.hideMarkers = function(){
+        for (var i = 0; i < markers.length; i++) {
+            markers[i].setVisible(false);
+          }
+    }
+    
+
 }
