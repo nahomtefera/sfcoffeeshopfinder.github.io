@@ -172,7 +172,6 @@ function initMap(){
         stopMarkerAnimation(this, 2000);
         // create the infowindow
         populateInfoWindow(this);
-        
     }
     //
     // 11. We are also going to create a functino to draw in our map `drawingManager()`
@@ -222,7 +221,7 @@ function initMap(){
 let getStreetView = function(){};
 
 function populateInfoWindow(marker){
-         
+    
     // Close previous popup
     if(lastPopupWindow){
         lastPopupWindow.close();
@@ -274,6 +273,8 @@ function populateInfoWindow(marker){
         lastPopupWindow = infoWindow;
         infoWindow.open(map, marker);
     }
+    lastMarker = marker;
+    
 }
 // 9. Create the functions that will display and hide the infoWindow
 // This function will loop through every marker and display them all

@@ -80,6 +80,7 @@ let ViewModel = function appViewModel() {
 
     // when a new infoWindow opens the previous one will clsoe
     this.openMarker = function() {
+        self.hideMarkers();
         if(lastPopupWindow){
             lastPopupWindow.close();
         }
@@ -105,6 +106,9 @@ let ViewModel = function appViewModel() {
     }
     
     this.hideMarkers = function(){
+        if(lastPopupWindow){
+            lastPopupWindow.close();
+        }
         for (var i = 0; i < markers.length; i++) {
             markers[i].setVisible(false);
           }
