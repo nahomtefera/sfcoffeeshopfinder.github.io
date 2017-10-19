@@ -1,4 +1,3 @@
-let searchBox = document.getElementById("search-box"); // element where the user will start the search
 let lastOpenedInfoWindow; // we use this variable as a flag to know wich marker was opened
 let lastPopupWindow;
 // let searchboxtest = ko.observable();
@@ -103,7 +102,6 @@ let ViewModel = function appViewModel() {
 
     // when a new infoWindow opens the previous one will clsoe
     this.openMarker = function() {
-        self.hideMarkers();
         if(lastPopupWindow){
             lastPopupWindow.close();
         }

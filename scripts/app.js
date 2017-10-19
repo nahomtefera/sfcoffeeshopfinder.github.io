@@ -22,6 +22,10 @@
 //GLOBAL variables `map`, `polygon` and `markers` 
 let map, markers = [], polygon = null, lastMarker;
 
+function googleError(){
+    alert("There is an error with the Google Maps request");
+}
+
 function initMap(){
     let style = [
         {
@@ -173,49 +177,6 @@ function initMap(){
         // create the infowindow
         populateInfoWindow(this);
     }
-    //
-    // 11. We are also going to create a functino to draw in our map `drawingManager()`
-    //
-    // Initialize the drawing manager
-    // // We won't be using this tool in this project
-    // let drawingManager = new google.maps.drawing.DrawingManager({
-    //     drawingMode: google.maps.drawing.OverlayType.POLYGON,
-    //     drawingControl: true,
-    //     drawingControlOptions: {
-    //         position: google.maps.ControlPosition.TOP_LEFT,
-    //         drawingModes: [
-    //             google.maps.drawing.OverlayType.POLYGON
-    //         ]
-    //     }
-    // });
-
-    // 7. Now we will add another event listener to the button `show-marker` and `hide-marker`
-    // This is know handeled by knockout event binders
-    
-    // document.getElementById('toggle-drawing').addEventListener('click', function() {
-    //     toggleDrawing(drawingManager);
-    //   });
-
-    // 11. iii. Add event listener to show markers inside the plygon once it's complete
-    // drawingManager.addListener("overlaycomplete", function(event){
-    //     // remove polygon if there is already one
-    //     if(polygon) {
-    //         polygon.setMap(null);
-    //         hideMarkers();
-    //     }
-    //     // deactivate drawing mode
-    //     drawingManager.setDrawingMode(null);
-
-    //     // Create a new editable polygon
-    //     polygon = event.overlay;
-    //     polygon.setEditable(true);
-    //     // Searching within the polygon.
-    //     searchWithinPolygon();
-    //     // Make sure the search is re-done if the poly is changed.
-    //     polygon.getPath().addListener('set_at', searchWithinPolygon);
-    //     polygon.getPath().addListener('insert_at', searchWithinPolygon);
-    // });
-    
     initializeMarkers();
 }
 // 8. Create the function that will create the infoWindow
