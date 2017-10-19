@@ -27,4 +27,3 @@ $.ajax({
     console.log(error);
     alert("There was an issue with " + "\nl" + error);
 });
-

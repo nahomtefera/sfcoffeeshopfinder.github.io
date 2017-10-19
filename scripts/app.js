@@ -177,16 +177,17 @@ function initMap(){
     // 11. We are also going to create a functino to draw in our map `drawingManager()`
     //
     // Initialize the drawing manager
-    let drawingManager = new google.maps.drawing.DrawingManager({
-        drawingMode: google.maps.drawing.OverlayType.POLYGON,
-        drawingControl: true,
-        drawingControlOptions: {
-            position: google.maps.ControlPosition.TOP_LEFT,
-            drawingModes: [
-                google.maps.drawing.OverlayType.POLYGON
-            ]
-        }
-    });
+    // // We won't be using this tool in this project
+    // let drawingManager = new google.maps.drawing.DrawingManager({
+    //     drawingMode: google.maps.drawing.OverlayType.POLYGON,
+    //     drawingControl: true,
+    //     drawingControlOptions: {
+    //         position: google.maps.ControlPosition.TOP_LEFT,
+    //         drawingModes: [
+    //             google.maps.drawing.OverlayType.POLYGON
+    //         ]
+    //     }
+    // });
 
     // 7. Now we will add another event listener to the button `show-marker` and `hide-marker`
     // This is know handeled by knockout event binders

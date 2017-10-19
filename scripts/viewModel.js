@@ -1,10 +1,13 @@
 let searchBox = document.getElementById("search-box"); // element where the user will start the search
 let lastOpenedInfoWindow; // we use this variable as a flag to know wich marker was opened
 let lastPopupWindow;
+// let searchboxtest = ko.observable();
 
 let ViewModel = function appViewModel() {
     let self = this;
     
+    this.searchboxtest = ko.observable();
+
     this.itemsToRender = ko.observableArray();
     
   
@@ -35,9 +38,11 @@ let ViewModel = function appViewModel() {
             let currentItemAddress = currentItem.venue.location.address;
             let currentItemRating = currentItem.venue.rating;
             let currentIsOpen = currentItem.venue.hours.status;
-            // if the value of the input matches 
-            // the name of the business or the address we will show that business            
-            if(currentItemName.toLowerCase().indexOf(searchBox.value.toLowerCase()) != -1 || (currentItemAddress) && currentItemAddress.toLowerCase().indexOf(searchBox.value.toLowerCase()) != -1 ){
+            let inputedText = self.searchboxtest();
+
+            //at the beginning inputText is undefined
+            if(typeof(inputedText) == "undefined"){
+                // we want to show the markers and list when the page loads
                 self.listedItems.push(
                     {
                         name: ko.observable(currentItemName),
@@ -47,31 +52,49 @@ let ViewModel = function appViewModel() {
                         time: currentIsOpen,
                     }
                 );
-                // this will show the markers that match the input
+                // this will show all the markers
                 if(typeof markers[i] !== "undefined"){
                     markers[i].setVisible(true);
                 }
-            } else {
-
-                // this will hide the markers that don't match with the search input
-                markers[i].setVisible(false);
-                // if the value of the search box doesn't match 
-                // the name or address of our businesses it will display 'no matches'
-                noMatches++;
                 
-                
-                if(noMatches === self.itemsToRender().length){
-                    self.listedItems([
+                // once we click in the text input field it won't have a value of undefined anymore
+            } else if(typeof(inputedText) !== "undefined"){
+                // this will push the markers that match the input test to a variable
+                // and from that variable it will be pushed to the list 
+                if(currentItemName.toLowerCase().indexOf(inputedText.toLowerCase()) != -1 || (currentItemAddress) && currentItemAddress.toLowerCase().indexOf(inputedText.toLowerCase()) != -1 ){
+                    self.listedItems.push(
                         {
-                            name: "",
-                            address: "",
-                            id: "",
-                            rating: "",
-                            time: ""
+                            name: ko.observable(currentItemName),
+                            address: currentItemAddress,
+                            id: currentItemId,
+                            rating: currentItemRating,
+                            time: currentIsOpen,
                         }
-                    ]);
+                    );
+                    // this will show the markers that match the input
+                    if(typeof markers[i] !== "undefined"){
+                        markers[i].setVisible(true);
+                    }
+                } else {
+                        // this will hide the markers that don't match with the search input
+                    markers[i].setVisible(false);
+                    // if the value of the search box doesn't match 
+                    // the name or address of our businesses it will display 'no matches'
+                    noMatches++;
+                    
+                    
+                    if(noMatches === self.itemsToRender().length){
+                        self.listedItems([
+                            {
+                                name: "",
+                                address: "",
+                                id: "",
+                                rating: "",
+                                time: ""
+                            }
+                        ]);
+                    }
                 }
-                
             }
         }
     };
