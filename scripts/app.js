@@ -197,24 +197,24 @@ function initMap(){
     //   });
 
     // 11. iii. Add event listener to show markers inside the plygon once it's complete
-    drawingManager.addListener("overlaycomplete", function(event){
-        // remove polygon if there is already one
-        if(polygon) {
-            polygon.setMap(null);
-            hideMarkers();
-        }
-        // deactivate drawing mode
-        drawingManager.setDrawingMode(null);
+    // drawingManager.addListener("overlaycomplete", function(event){
+    //     // remove polygon if there is already one
+    //     if(polygon) {
+    //         polygon.setMap(null);
+    //         hideMarkers();
+    //     }
+    //     // deactivate drawing mode
+    //     drawingManager.setDrawingMode(null);
 
-        // Create a new editable polygon
-        polygon = event.overlay;
-        polygon.setEditable(true);
-        // Searching within the polygon.
-        searchWithinPolygon();
-        // Make sure the search is re-done if the poly is changed.
-        polygon.getPath().addListener('set_at', searchWithinPolygon);
-        polygon.getPath().addListener('insert_at', searchWithinPolygon);
-    });
+    //     // Create a new editable polygon
+    //     polygon = event.overlay;
+    //     polygon.setEditable(true);
+    //     // Searching within the polygon.
+    //     searchWithinPolygon();
+    //     // Make sure the search is re-done if the poly is changed.
+    //     polygon.getPath().addListener('set_at', searchWithinPolygon);
+    //     polygon.getPath().addListener('insert_at', searchWithinPolygon);
+    // });
     
     initializeMarkers();
 }
