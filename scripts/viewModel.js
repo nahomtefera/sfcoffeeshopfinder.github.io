@@ -52,7 +52,7 @@ let ViewModel = function appViewModel() {
                     }
                 );
                 // this will show all the markers
-                if(typeof markers[i] !== "undefined"){
+                if(typeof markers !== "undefined" && typeof markers[i] !== "undefined"){
                     markers[i].setVisible(true);
                 }
                 
