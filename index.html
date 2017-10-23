@@ -59,7 +59,14 @@
         <!-- Scripts -->
         <script>
             let windowHeight = window.innerHeight + "px";
-            document.getElementById("map").style.height = windowHeight;
+            if(window.innerWidth >= 768){
+                document.getElementById("map").style.height = windowHeight;
+            }
+            $(window).resize(function(){
+                if(window.innerWidth >= 768){
+                 document.getElementById("map").style.height = windowHeight;
+                }
+            });
         </script>
         <!-- Google Maps Call -->
         <script async defer
