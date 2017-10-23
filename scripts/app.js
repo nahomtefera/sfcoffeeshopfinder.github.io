@@ -20,7 +20,7 @@
 */
 
 //GLOBAL variables `map`, `polygon` and `markers` 
-let map, markers = [], polygon = null, lastMarker;
+var map, markers = [], polygon = null, lastMarker;
 
 function googleError(){
     alert("There is an error with the Google Maps request");
