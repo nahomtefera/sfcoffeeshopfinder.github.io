@@ -57,6 +57,11 @@
         </div>
 
         <!-- Scripts -->
+        <script>
+            let windowHeight = window.innerHeight + "px";
+            document.getElementById("map").style.height = windowHeight;
+        </script>
+        <!-- Google Maps Call -->
         <script async defer
             src="https://maps.googleapis.com/maps/api/js?libraries=drawing,geometry&key=AIzaSyDq6WjLcfMSZ-bWYxkRr-EZ8NbcioNfzYE&v=3"
             onerror="googleError()">
