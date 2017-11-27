@@ -4,7 +4,7 @@ $.ajax({
     url:'https://api.foursquare.com/v2/venues/explore',
     method: 'GET',
     dataType: 'json',
-    data: 'limit=50' +
+    data: 'limit=20' +
             '&near='+ "San Francisco, CA" +
             '&client_id=FC3C2VK4UPVVYEJESMJUG0TIN2IRIF5YPU5Y1XOYXI3RMAHH' +
             '&client_secret=3MEGPSXCNYHECURVFIP5JNK1UX2E3U0N0XW3XAGKETU2I4YJ' +
