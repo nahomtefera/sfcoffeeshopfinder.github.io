@@ -49,6 +49,8 @@
 
 #list-ul {
     width: 100%;
+    height: 600px;
+    min-height: 100%;
     text-align: left;
     padding: 0;
     margin: 0;
@@ -232,7 +234,7 @@ li a:visited {
 @media only screen and (max-width: 768px) {
     #map-container {
         width: 100%;
-        height: 45%;    
+        height: 300px;    
     }
 
     #map{

@@ -59,11 +59,11 @@
         <!-- Scripts -->
         <script>
             let windowHeight = window.innerHeight + "px";
-            if(window.innerWidth >= 768){
+            if(window.innerWidth > 768){
                 document.getElementById("map").style.height = windowHeight;
             }
             $(window).resize(function(){
-                if(window.innerWidth >= 768){
+                if(window.innerWidth > 768){
                  document.getElementById("map").style.height = windowHeight;
                 } 
                 // else {
